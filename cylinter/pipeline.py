@@ -50,6 +50,7 @@ def run_pipeline(config, start_module_name):
         markersToExclude=config.markersToExclude,
         xCoordinateCol=config.xCoordinateCol,
         yCoordinateCol=config.yCoordinateCol,
+        pixelSize=config.pixelSize,
 
         delintMode=config.delintMode,
         showAbChannels=config.showAbChannels,

@@ -79,6 +79,7 @@ class QC(object):
                  markersToExclude=None,
                  xCoordinateCol=None,
                  yCoordinateCol=None,
+                 pixelSize=None,
 
                  # selectROIs -
                  delintMode=None,
@@ -180,6 +181,7 @@ class QC(object):
         self.markersToExclude = markersToExclude
         self.xCoordinateCol = xCoordinateCol
         self.yCoordinateCol = yCoordinateCol
+        self.pixelSize = pixelSize
 
         self.delintMode = delintMode
         self.showAbChannels = showAbChannels

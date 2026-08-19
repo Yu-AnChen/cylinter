@@ -119,6 +119,13 @@ def aggregateData(data, self, args):
                 print(e)
                 sys.exit()
 
+            # convert centroid columns from physical units (e.g. microns) to
+            # pixel units so they align with image and segmentation mask
+            # arrays throughout the pipeline
+            if self.pixelSize:
+                csv[self.xCoordinateCol] = csv[self.xCoordinateCol] / self.pixelSize
+                csv[self.yCoordinateCol] = csv[self.yCoordinateCol] / self.pixelSize
+
             # (for SARDANA)
             # trim mask object names from column headers
             # cols_update = [
