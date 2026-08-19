@@ -48,6 +48,8 @@ def run_pipeline(config, start_module_name):
         samplesToExclude=config.samplesToExclude,
         counterstainChannel=config.counterstainChannel,
         markersToExclude=config.markersToExclude,
+        xCoordinateCol=config.xCoordinateCol,
+        yCoordinateCol=config.yCoordinateCol,
 
         delintMode=config.delintMode,
         showAbChannels=config.showAbChannels,
