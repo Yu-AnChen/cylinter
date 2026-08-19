@@ -47,6 +47,8 @@ class Config:
         config.samplesToExclude = list(data['samplesToExclude'])
         config.counterstainChannel = str(data['counterstainChannel'])
         config.markersToExclude = list(data['markersToExclude'])
+        config.xCoordinateCol = str(data['xCoordinateCol'])
+        config.yCoordinateCol = str(data['yCoordinateCol'])
 
         # CLASS MODULE CONFIGURATIONS
         

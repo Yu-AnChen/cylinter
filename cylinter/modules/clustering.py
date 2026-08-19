@@ -1272,7 +1272,7 @@ def clustering(data, self, args):
                                     contrast_limits=(min, max)
                                 )
 
-                        centroids = data[['Y_centroid', 'X_centroid']][
+                        centroids = data[[self.yCoordinateCol, self.xCoordinateCol]][
                             (data.index.isin(selector.ind)) & 
                             (data['Sample'] == value)
                         ]
@@ -1604,7 +1604,7 @@ def clustering(data, self, args):
         match_reference_implementation=False).fit(clustering_input)
     data[f'cluster_{self.dimensionEmbedding}d'] = clustering.labels_
 
-    data = reorganize_dfcolumns(data, markers, self.dimensionEmbedding)
+    data = reorganize_dfcolumns(data, markers, self.dimensionEmbedding, self)
 
     # save dataframe in standard CSV format for analysis outside CyLinter
     data.to_csv(

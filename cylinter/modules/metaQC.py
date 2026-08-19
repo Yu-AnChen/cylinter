@@ -1199,7 +1199,7 @@ def metaQC(data, self, args):
                                              QC_color_dict.items()):
 
                                             centroids = chunk[
-                                                ['Y_centroid', 'X_centroid']][
+                                                [self.yCoordinateCol, self.xCoordinateCol]][
                                                     (chunk.index.isin(
                                                      selector.ind))
                                                     & (chunk['Sample'] ==
@@ -2003,7 +2003,7 @@ def metaQC(data, self, args):
     if self.metaQC:
         data.drop('handle', axis=1, inplace=True)
 
-    data = reorganize_dfcolumns(data, markers, 2)
+    data = reorganize_dfcolumns(data, markers, 2, self)
 
     print()
     print()

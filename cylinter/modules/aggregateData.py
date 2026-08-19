@@ -53,8 +53,8 @@ def aggregateData(data, self, args):
             # select boilerplate columns
             cols = (
                 [i for i in [j for j in markers['marker_name']] +
-                 [i for i in ['CellID', 'X_centroid', 'Y_centroid', 'Area', 'MajorAxisLength',
-                              'MinorAxisLength', 'Eccentricity', 'Solidity', 'Extent', 
+                 [i for i in ['CellID', self.xCoordinateCol, self.yCoordinateCol, 'Area', 'MajorAxisLength',
+                              'MinorAxisLength', 'Eccentricity', 'Solidity', 'Extent',
                               'Orientation'] if i in csv.columns]]
             )
 
@@ -179,7 +179,7 @@ def aggregateData(data, self, args):
 
     # ensure MCMICRO-generated columns come first and
     # are in the same order as csv feature tables
-    data = reorganize_dfcolumns(data, markers, self.dimensionEmbedding)
+    data = reorganize_dfcolumns(data, markers, self.dimensionEmbedding, self)
 
     print()
     print()

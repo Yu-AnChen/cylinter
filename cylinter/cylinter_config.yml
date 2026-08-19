@@ -39,6 +39,14 @@ markersToExclude: ["Rabbit IgG", "Goat IgG", "Mouse IgG", "CD56", "CD13",
 # Does not include nuclear dyes. They are needed for the
 # cycleCorrelation module to remove cell dropout.
 
+xCoordinateCol: "X_centroid"
+# (str) Name of the column in the single-cell feature tables (CSV)
+# containing cell X centroid coordinates.
+
+yCoordinateCol: "Y_centroid"
+# (str) Name of the column in the single-cell feature tables (CSV)
+# containing cell Y centroid coordinates.
+
 ###############################################################################
 # MODULE-SPECIFIC CONFIGURATIONS
 
