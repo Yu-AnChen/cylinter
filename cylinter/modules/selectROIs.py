@@ -227,12 +227,19 @@ def selectROIs(data, self, args):
                     except:
                         pass
 
+            # cell segmentation outlines channel, read first (regardless of
+            # showAbChannels) to obtain pixel scale/units, which are shared
+            # across all channels of the same image
+            file_path = get_filepath(self, check, sample, 'SEG')
+            seg, seg_min, seg_max, scale, units = single_channel_pyramid(
+                file_path, channel=0)
+
             # antibody channels
             if self.showAbChannels:
                 for ch in reversed(abx_channels):
                     channel_number = marker_channel_number(self, markers, ch)
                     file_path = get_filepath(self, check, sample, 'TIF')
-                    img, min, max, scale, units = single_channel_pyramid(
+                    img, min, max, _, _ = single_channel_pyramid(
                         file_path, channel=channel_number)
                     layer = viewer.add_image(
                         img, rgb=False, blending='additive',
@@ -242,16 +249,14 @@ def selectROIs(data, self, args):
                     global_state.loaded_ims[ch] = img
                     global_state.abx_layers[ch] = layer
 
-            # H&E channel (single image or separate RGB channels), 
+            # H&E channel (single image or separate RGB channels),
             # to be implemented here
 
             # cell segmentation outlines channel
-            file_path = get_filepath(self, check, sample, 'SEG')
-            seg, min, max, _, _ = single_channel_pyramid(file_path, channel=0)
             viewer.add_image(
                 seg, rgb=False, blending='additive', opacity=1.0,
                 colormap='gray', visible=False, name='segmentation',
-                scale=scale, units=units, contrast_limits=(min, max)
+                scale=scale, units=units, contrast_limits=(seg_min, seg_max)
             )
 
             # DNA1 channel
